@@ -3,7 +3,7 @@ import openpyxl
 path = r"E:\Git\Scenario-Software\SimpleTest_Factors.xlsx"
 
 
-def open_file(path):
+def read_projections(path):
     wb = openpyxl.load_workbook(path)
     sheet = wb.active
     cell_value = sheet
@@ -19,16 +19,16 @@ def open_file(path):
     return matrix
 
 
-def create_consistency_matrix(matrix):
+def print_projections(matrix):
     for factor in matrix[1:]:
         print(factor[0], end=": ")
-        for projection in factor[1:]:
+        for projection in factor[1:-1]:
             print(projection, end=", ")
-        print("\n")
+        print(factor[-1])
 
 
 def main():
-    create_consistency_matrix(open_file(path))
+    print_projections(read_projections(path))
 
 
 if __name__ == "__main__":

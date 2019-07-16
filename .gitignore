@@ -124,3 +124,4 @@ dmypy.json
 .vscode/settings.json
 test.py
 consistency_matrix.xlsx
+~$consistency_matrix.xlsx

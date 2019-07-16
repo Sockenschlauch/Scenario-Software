@@ -4,7 +4,7 @@ from openpyxl import Workbook
 path = r"E:\Git\Scenario-Software\SimpleTest_Factors.xlsx"
 
 
-def read_projections(path):
+def read_projections(path):  # reads the list of factors with projections
     wb = openpyxl.load_workbook(path)
     sheet = wb.active
     cell_value = sheet
@@ -20,6 +20,7 @@ def read_projections(path):
     return factor_list
 
 
+# function for printing the projections in the terminal for debugging
 def print_projections(factor_list):
     for factor in factor_list[1:]:
         print(factor[0], end=": ")
@@ -35,11 +36,26 @@ def write_consistency_matrix(path, factor_list):
     ws1 = wb.active
     ws1.title = "consistency matrix"
 
-    row = 1
+# Writing the vertical projections
+    row = 3
     colum = 1
-    for factor in factor_list:
-        ws1.cell(row, colum).value = factor[0]
-        row += 1
+    for factor in factor_list[1:]:
+        for projection in factor[1:]:
+
+            ws1.cell(row, colum).value = factor[0]
+            ws1.cell(row, colum+1).value = projection
+
+            row += 1
+# Writing the horizontal projections
+    row = 1
+    colum = 3
+    for factor in factor_list[1:]:
+        for projection in factor[1:]:
+
+            ws1.cell(row, colum).value = factor[0]
+            ws1.cell(row+1, colum).value = projection
+
+            colum += 1
 
     wb.save(filename=dst_filename)
 

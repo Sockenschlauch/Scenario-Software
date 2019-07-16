@@ -123,3 +123,4 @@ dmypy.json
 .pyre/
 .vscode/settings.json
 test.py
+consistency_matrix.xlsx

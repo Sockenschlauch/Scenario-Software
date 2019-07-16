@@ -35,6 +35,12 @@ def write_consistency_matrix(path, factor_list):
     ws1 = wb.active
     ws1.title = "consistency matrix"
 
+    row = 1
+    colum = 1
+    for factor in factor_list:
+        ws1.cell(row, colum).value = factor[0]
+        row += 1
+
     wb.save(filename=dst_filename)
 
 

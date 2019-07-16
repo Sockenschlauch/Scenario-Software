@@ -2,7 +2,6 @@ import openpyxl
 from openpyxl import Workbook
 from openpyxl.styles.borders import Border, Side
 
-path = r"E:\Git\Scenario-Software\SimpleTest_Factors.xlsx"
 
 # defining the style of borders
 thin_border_bottom = Border(bottom=Side(style='thin'))
@@ -86,14 +85,3 @@ def get_projection_count(factor_list):  # returns the length of the factor list
         for projection in factor[1:]:
             factor_list_len += 1
     return factor_list_len
-
-
-def main():
-    projections = read_projections(path)
-    print("Creating consistency matrix...")
-    write_consistency_matrix(path=path, factor_list=projections)
-    print("Consistency matrix created!")
-
-
-if __name__ == "__main__":
-    main()

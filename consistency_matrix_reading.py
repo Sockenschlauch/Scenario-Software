@@ -64,10 +64,6 @@ def read_matrix(path, projections):
                     for y in range(len(projections[vertical])):
                         matrix[horizontal][vertical][x].append(sheet.cell(
                             row + y, colum + x).value)
-                        print("[", horizontal, "]", "[", vertical, "]",
-                              "[", x, "]", "[", y, "] in row: ", row + y, ", colum: ", colum + x, " value:", sheet.cell(
-                                  row + y, colum + x).value)
-            print("----- new Box -----")
             row += len(projections[vertical])
         colum += len(projections[horizontal])
         row = 3

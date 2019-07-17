@@ -59,10 +59,10 @@ def read_matrix(path, projections):
         for vertical in range(len(projections)):
             matrix[horizontal].append([])
             if horizontal < vertical:
-                for y in range(len(projections[vertical])):
+                for x in range(len(projections[horizontal])):
                     matrix[horizontal][vertical].append([])
-                    for x in range(len(projections[horizontal])):
-                        matrix[horizontal][vertical][y].append(sheet.cell(
+                    for y in range(len(projections[vertical])):
+                        matrix[horizontal][vertical][x].append(sheet.cell(
                             row + y, colum + x).value)
                         print("[", horizontal, "]", "[", vertical, "]",
                               "[", x, "]", "[", y, "] in row: ", row + y, ", colum: ", colum + x, " value:", sheet.cell(

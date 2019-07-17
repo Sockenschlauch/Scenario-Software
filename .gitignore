@@ -125,3 +125,5 @@ dmypy.json
 test.py
 consistency_matrix.xlsx
 ~$consistency_matrix.xlsx
+consistency_matrix_test.xlsx
+~$consistency_matrix_test.xlsx

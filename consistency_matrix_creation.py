@@ -2,7 +2,6 @@ import openpyxl
 from openpyxl import Workbook
 from openpyxl.styles.borders import Border, Side
 
-path = r"E:\Git\Scenario-Software\SimpleTest_Factors.xlsx"
 
 # defining the style of borders
 thin_border_bottom = Border(bottom=Side(style='thin'))
@@ -38,8 +37,8 @@ def write_consistency_matrix(path, factor_list):
     dst_filename = "consistency_matrix.xlsx"
 
     wb = Workbook()
-    ws1 = wb.active
-    ws1.title = "consistency matrix"
+    sheet = wb.active
+    sheet.title = "consistency matrix"
 
     len = get_projection_count(factor_list)
 
@@ -48,34 +47,34 @@ def write_consistency_matrix(path, factor_list):
     colum = 1
     for factor in factor_list[1:]:
         for projection in factor[1:]:
-            ws1.cell(row, colum).value = factor[0]
-            ws1.cell(row, colum+1).value = projection
-            ws1.cell(row, colum+1).border = thin_border_right
+            sheet.cell(row, colum).value = factor[0]
+            sheet.cell(row, colum+1).value = projection
+            sheet.cell(row, colum+1).border = thin_border_right
             row += 1
 
         for i in range(1, len+3):
-            if ws1.cell(row-1, i).border == Border(right=Side(style='thin')):
-                ws1.cell(row-1, i).border = Border(bottom=Side(style='thin'),
-                                                   right=Side(style='thin'))
+            if sheet.cell(row-1, i).border == Border(right=Side(style='thin')):
+                sheet.cell(row-1, i).border = Border(bottom=Side(style='thin'),
+                                                     right=Side(style='thin'))
             else:
-                ws1.cell(row-1, i).border = thin_border_bottom
+                sheet.cell(row-1, i).border = thin_border_bottom
 
 # Writing the horizontal projections
     row = 1
     colum = 3
     for factor in factor_list[1:]:
         for projection in factor[1:]:
-            ws1.cell(row, colum).value = factor[0]
-            ws1.cell(row+1, colum).value = projection
-            ws1.cell(row+1, colum).border = thin_border_bottom
+            sheet.cell(row, colum).value = factor[0]
+            sheet.cell(row+1, colum).value = projection
+            sheet.cell(row+1, colum).border = thin_border_bottom
             colum += 1
 
         for i in range(1, len+3):
-            if ws1.cell(i, colum-1).border == Border(bottom=Side(style='thin')):
-                ws1.cell(i, colum-1).border = Border(bottom=Side(style='thin'),
-                                                     right=Side(style='thin'))
+            if sheet.cell(i, colum-1).border == Border(bottom=Side(style='thin')):
+                sheet.cell(i, colum-1).border = Border(bottom=Side(style='thin'),
+                                                       right=Side(style='thin'))
             else:
-                ws1.cell(i, colum-1).border = thin_border_right
+                sheet.cell(i, colum-1).border = thin_border_right
 
     wb.save(filename=dst_filename)
 
@@ -86,14 +85,3 @@ def get_projection_count(factor_list):  # returns the length of the factor list
         for projection in factor[1:]:
             factor_list_len += 1
     return factor_list_len
-
-
-def main():
-    projections = read_projections(path)
-    print("Creating consistency matrix...")
-    write_consistency_matrix(path=path, factor_list=projections)
-    print("Consistency matrix created!")
-
-
-if __name__ == "__main__":
-    main()

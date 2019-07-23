@@ -122,6 +122,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .vscode/settings.json
-test.py
-consistency_matrix.xlsx
 ~$consistency_matrix.xlsx
+~$consistency_matrix_test.xlsx

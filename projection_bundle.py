@@ -1,10 +1,10 @@
 class projection_bundle():
     from projection_processing import calculate_consistency
 
-    def __init__(self, projections):
-        self.projections = projections
-        self.consistency = calculate_consistency(projections)
+    def __init__(self, bundle):
+        self.bundle = bundle
+        self.consistency = calculate_consistency(bundle)
 
     def set_consistency(matrix):
         self.consistency = self.consistency = calculate_consistency(
-            matrix=matrix, projections=projections)
+            matrix=matrix, bundle=bundle)

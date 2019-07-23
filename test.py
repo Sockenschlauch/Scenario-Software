@@ -13,8 +13,9 @@ bundle = [1, 1, 1]
 # print("Consistency matrix created!")
 
 projections = read_projections_from_matrix(matrix_path)
-print(projections)
 matrix = read_matrix(matrix_path, projections)
+
+print(projections)
 print(matrix)
 print(bundle)
 print(get_projections(projections, bundle))

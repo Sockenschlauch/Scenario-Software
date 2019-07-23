@@ -16,3 +16,10 @@ def get_projections(projection_list, bundle):
     for i in range(len(bundle)):
         projections.append(projection_list[i][bundle[i]])
     return projections
+
+
+def calculate_permutations(projections):
+    n_permutations = 1
+    for factor in projections:
+        n_permutations *= len(factor)
+    return n_permutations

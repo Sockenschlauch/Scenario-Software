@@ -1,6 +1,7 @@
 from consistency_matrix_creation import *
 from consistency_matrix_reading import *
 from projection_processing import *
+from projection_bundle import *
 
 factors_path = r"E:\Git\Scenario-Software\SimpleTest_Factors.xlsx"
 matrix_path = r"E:\Git\Scenario-Software\consistency_matrix_test.xlsx"
@@ -14,6 +15,12 @@ bundle = [1, 1, 1]
 
 projections = read_projections_from_matrix(matrix_path)
 matrix = read_matrix(matrix_path, projections)
+
+iter = iterator(projections)
+for iteratation in iter:
+    bundle = iter.get_counter()
+    print(bundle)
+
 
 print(projections)
 print(matrix)

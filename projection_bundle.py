@@ -11,24 +11,43 @@ class projection_bundle():
 
 
 class iterator():
-    _overflow = []
-    _counter = []
 
     def __init__(self, projections):
+        self._overflow = []
+        self._counter = []
 
         for projection in projections:
-            _overflow.append(len(projection))
-            _counter.append(1)
+            self._overflow.append(len(projection))
+            self._counter.append(1)
+        # important to start iterations with the first value
+        self.counter[0] = 0
 
-    def get_next():
-        _counter[0] += 1
-        for i in range(len(_counter)):
-            if _counter[i] > _overflow[i] and i == len(_counter):
+    def get_next(self):
+        self._counter[0] += 1
+        for i in range(len(self._counter)):
+            if self._counter[i] > self._overflow[i] and i == len(self._counter):
                 return False
-            elif _counter[i] > _overflow[i]:
-                _counter[i] = 1
-                _counter[i+1] += 1
-        return _counter
+            elif self._counter[i] > self._overflow[i]:
+                self._counter[i] = 1
+                self._counter[i+1] += 1
+        return self._counter
 
-    def get_counter():
-        return _counter
+    def get_counter(self):
+        return self._counter
+
+
+# Making the Iterator iteratable
+
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self._counter[0] += 1
+        for i in range(len(self._counter)):
+            if self._counter[i] > self._overflow[i] and i == len(self._counter):
+                return False
+            elif self._counter[i] > self._overflow[i]:
+                self._counter[i] = 1
+                self._counter[i+1] += 1
+        return self._counter

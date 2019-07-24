@@ -13,8 +13,8 @@ def calculate_consistency(matrix, bundle):
 
 def get_projections(projection_list, bundle):
     projections = []
-    for i in range(len(bundle)):
-        projections.append(projection_list[i][bundle[i]])
+    for i in range(len(projection_list)):
+        projections.append(projection_list[i][bundle[i]-1])
     return projections
 
 

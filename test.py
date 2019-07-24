@@ -16,14 +16,16 @@ bundle = [1, 1, 1]
 projections = read_projections_from_matrix(matrix_path)
 matrix = read_matrix(matrix_path, projections)
 
+print("Iterations: ")
 iter = iterator(projections)
-for iteratation in iter:
+while iter.get_next():
     bundle = iter.get_counter()
-    print(bundle)
+    print(get_projections(projections, bundle))
 
 
-print(projections)
-print(matrix)
-print(bundle)
-print(get_projections(projections, bundle))
-print(calculate_consistency(matrix, bundle))
+bundle = [1, 1, 1]
+print("\nProjections: ", projections)
+print("\nMatrix: ", matrix)
+print("\nBundle: ", bundle)
+print("\nget Projections: ", get_projections(projections, bundle))
+print("\nConsistency: ", calculate_consistency(matrix, bundle))

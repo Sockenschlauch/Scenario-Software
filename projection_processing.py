@@ -5,8 +5,8 @@ def calculate_consistency(matrix, bundle):
             if row <= colum:
                 pass
             else:
-                print("Colum: ", colum, "\tRow: ", row, "\tValue: ",
-                      matrix[colum][row][bundle[colum]-1][bundle[row]-1])
+                # Only for checking how value is calulated
+                # print("Colum: ", colum, "\tRow: ", row, "\tValue: ", matrix[colum][row][bundle[colum]-1][bundle[row]-1])
                 sum += matrix[colum][row][bundle[colum]-1][bundle[row]-1]
 
     return sum

@@ -2,11 +2,12 @@ def calculate_consistency(matrix, bundle):
     sum = 0
     for colum in range(len(bundle)):
         for row in range(len(bundle)):
-            if row < colum:
+            if row <= colum:
                 pass
             else:
-                print()
-                sum += matrix[colum][row][bundle[colum]][bundle[row]]
+                print("Colum: ", colum, "\tRow: ", row, "\tValue: ",
+                      matrix[colum][row][bundle[colum]-1][bundle[row]-1])
+                sum += matrix[colum][row][bundle[colum]-1][bundle[row]-1]
 
     return sum
 

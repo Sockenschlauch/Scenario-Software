@@ -24,11 +24,3 @@ def calculate_permutations(projections):
     for factor in projections:
         n_permutations *= len(factor)
     return n_permutations
-
-
-def iterate_permuations(projections):
-    permutations = []
-    for projection in projections:
-        permutations.append(1)
-
-    return permutations

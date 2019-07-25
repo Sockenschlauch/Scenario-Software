@@ -13,13 +13,16 @@ class iterator():
     def __init__(self, projections):
         self._overflow = []
         self._counter = []
+        self._n_permutations = self.calculate_permutations(projections)
 
+        # building counter & overflow
         for projection in projections:
             self._overflow.append(len(projection))
             self._counter.append(1)
         # important to start iterations with the first value
         self._counter[0] = 0
 
+    # return the next iteration
     def get_next(self):
         self._counter[0] += 1
         for i in range(len(self._counter)):
@@ -30,8 +33,20 @@ class iterator():
                 self._counter[i+1] += 1
         return self._counter
 
+    # returns the current iteration
     def get_counter(self):
         return self._counter
+
+    # Calculating the number of permutations
+    def calculate_permutations(self, projections):
+        n_permutations = 1
+        for factor in projections:
+            n_permutations *= len(factor)
+        return n_permutations
+
+    # returns the number of permutations
+    def get_n_permutations(self):
+        return self._n_permutations
 
 
 # Making the Iterator iteratable

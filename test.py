@@ -5,6 +5,7 @@ from projection_bundle import *
 
 factors_path = r"E:\Git\Scenario-Software\SimpleTest_Factors.xlsx"
 matrix_path = r"E:\Git\Scenario-Software\consistency_matrix_test.xlsx"
+keep_n_projections = 4  # How many projections should be kept for clustering
 
 bundle = [1, 1, 1]
 
@@ -33,3 +34,5 @@ while iter.get_next():
 
 for object in bundles:
     print(object.consistency)
+
+print("#Iterations: ", iter.get_n_permutations())

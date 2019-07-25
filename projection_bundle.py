@@ -1,9 +1,11 @@
+from projection_processing import calculate_consistency
+
+
 class projection_bundle():
-    from projection_processing import calculate_consistency
 
     def __init__(self, bundle, matrix):
         self.bundle = bundle
-        self.consistency = self.calculate_consistency(matrix, bundle)
+        self.consistency = calculate_consistency(matrix, bundle)
 
 
 class iterator():
@@ -33,7 +35,6 @@ class iterator():
 
 
 # Making the Iterator iteratable
-
 
     def __iter__(self):
         return self

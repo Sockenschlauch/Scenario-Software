@@ -7,8 +7,6 @@ factors_path = r"E:\Git\Scenario-Software\SimpleTest_Factors.xlsx"
 matrix_path = r"E:\Git\Scenario-Software\consistency_matrix_test.xlsx"
 keep_n_projections = 4  # How many projections should be kept for clustering
 
-bundle = [1, 1, 1]
-
 # projections = read_projections(factors_path)
 # print("Creating consistency matrix...")
 # write_consistency_matrix(path=factors_path, factor_list=projections)
@@ -26,13 +24,14 @@ iter = iterator(projections)
 bundles = []
 while iter.get_next():
     bundle = iter.get_counter()
-    print("Projection: ", get_projections(projections, bundle),
-          "  \tConsistency: ", calculate_consistency(matrix, bundle))
-
     bundles.append(projection_bundle(bundle, matrix))
     bundles.sort(key=lambda x: x.consistency, reverse=True)
 
+    if len(bundles) > keep_n_projections:
+        bundles.pop()
+
 for object in bundles:
-    print(object.consistency)
+    print("Projection: ", object.bundle,
+          "\tConsistency: ", object.consistency)
 
 print("#Iterations: ", iter.get_n_permutations())

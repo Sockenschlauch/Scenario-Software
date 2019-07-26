@@ -4,10 +4,10 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 import scipy.cluster.hierarchy as sch
 import numpy as np
 
-bundle1 = np.array([1, 1, 3])
-bundle2 = np.array([2, 2, 3])
-bundle3 = np.array([1, 2, 1])
-bundle4 = np.array([1, 1, 1])
+bundle2 = [2, 2, 3]
+bundle1 = [1, 1, 3]
+bundle3 = [1, 2, 1]
+bundle4 = [1, 1, 1]
 bundles = np.array([bundle1, bundle2, bundle3, bundle4])
 
 # generate two clusters: a with 100 points, b with 50:

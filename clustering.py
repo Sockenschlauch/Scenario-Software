@@ -9,11 +9,18 @@ class clusterer():
     pass
 
 
-# Hamming metric: 0 if same, 1 if different
-d = sch.distance.pdist(bundles, 'hamming')
+def create_distance_matrix(bundles):
+    # Need to convert the class projection bundle in a list of bundles
+    bundles_list = []
+    for object in bundles:
+        bundles_list.append(object.bundle)
 
-# generate the linkage matrix
-Z = linkage(d, 'average')
+    bundles = np.array(bundles_list)
+    # Hamming metric: 0 if same, 1 if different
+    d = sch.distance.pdist(bundles, 'hamming')
+    # generate the linkage matrix
+    Z = linkage(d, 'ward')
+    return Z
 
 
 def fancy_dendrogram(*args, **kwargs):
@@ -39,3 +46,34 @@ def fancy_dendrogram(*args, **kwargs):
         if max_d:
             plt.axhline(y=max_d, c='k')
     return ddata
+
+
+def show_dendrogram(Z):
+    fancy_dendrogram(Z, truncate_mode='lastp',
+                     p=12,
+                     leaf_rotation=90.,
+                     leaf_font_size=12.,
+                     show_contracted=True,
+                     annotate_above=10,  # useful in small plots so annotations don't overlap
+                     )
+    plt.show()
+
+
+def show_elbow(Z):
+    # showing the elobow diagram
+    last = Z[-10:, 2]
+    last_rev = last[::-1]
+    idxs = np.arange(1, len(last) + 1)
+    plt.plot(idxs, last_rev)
+
+    acceleration = np.diff(last, 2)  # 2nd derivative of the distances
+    acceleration_rev = acceleration[::-1]
+    plt.plot(idxs[:-2] + 1, acceleration_rev)
+    plt.show()
+    # if idx 0 is the max of this we want 2 clusters
+    k = acceleration_rev.argmax() + 2
+    print("clusters:", k)
+
+
+def get_clusters(Z, k):
+    return sch.fcluster(Z, k, criterion='maxclust')

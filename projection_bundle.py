@@ -2,14 +2,12 @@ from projection_processing import calculate_consistency
 
 
 class projection_bundle():
-
     def __init__(self, bundle, matrix):
         self.bundle = bundle
         self.consistency = calculate_consistency(matrix, bundle)
 
 
 class iterator():
-
     def __init__(self, projections):
         self._overflow = []
         self._counter = []

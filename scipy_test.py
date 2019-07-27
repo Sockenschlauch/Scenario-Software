@@ -25,6 +25,8 @@ print(bundles)
 d = sch.distance.pdist(bundles, 'hamming')
 Z = linkage(d, 'average')
 
+print(Z)
+
 # Plotting the dendrogram more fancy
 
 

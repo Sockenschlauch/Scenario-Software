@@ -47,4 +47,18 @@ Z = create_distance_matrix(bundles)
 show_dendrogram(Z)
 show_elbow(Z)
 
-print(get_clusters(Z, 4))
+n = int(input("How many clusters are there? "))
+
+cluster_array = get_clusters(Z, n)
+
+# creating a list of clusters
+cluster_list = []
+for i in range(n):
+    cluster_list.append(cluster(i+1, projections))
+
+# sorting the projection bundles in the cluster in the cluster list
+for i in range(len(cluster_array)):
+    cluster_list[cluster_array[i]-1].add_bundle(bundles[i].bundle)
+
+for i in range(n):
+    print(cluster_list[i].get_mixture())

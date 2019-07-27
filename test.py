@@ -33,7 +33,7 @@ while iter.get_next():
     bundles.sort(key=lambda x: x.consistency, reverse=True)
 
     if len(bundles) > keep_n_projections:
-        bundles.pop()
+        del bundles[keep_n_projections]
 
 for object in bundles:
     print("Projection: ", object.bundle,

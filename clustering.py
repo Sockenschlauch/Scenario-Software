@@ -5,8 +5,34 @@ import scipy.cluster.hierarchy as sch
 import numpy as np
 
 
-class clusterer():
-    pass
+class cluster():
+    def __init__(self, cluster, projections):
+        self.cluster = cluster
+        self.bundles = []
+        self.n = 0
+
+        self.summation = []
+        for factor in range(len(projections)):
+            self.summation.append([])
+            for projection in range(len(projections[factor])):
+                self.summation[factor].append(0)
+
+    def add_bundle(self, bundle):
+        self.bundles.append(bundle)
+        self.n += 1
+
+        # adds 1 to one projection - specified in bundle - for each factor
+        for i in range(len(self.summation)):
+            self.summation[i][bundle[i]-1] += 1
+
+    def get_mixture(self):
+        mixture = []
+        for factor in range(len(self.summation)):
+            mixture.append([])
+            for projection in range(len(self.summation[factor])):
+                mixture[factor].append(
+                    self.summation[factor][projection]/self.n)
+        return mixture
 
 
 def create_distance_matrix(bundles):
@@ -72,7 +98,7 @@ def show_elbow(Z):
     plt.show()
     # if idx 0 is the max of this we want 2 clusters
     k = acceleration_rev.argmax() + 2
-    print("clusters:", k)
+    print("Recommend clusters from elbow diagram:", k)
 
 
 def get_clusters(Z, k):

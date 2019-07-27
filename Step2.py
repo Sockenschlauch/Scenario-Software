@@ -1,12 +1,10 @@
-from consistency_matrix_creation import *
 from consistency_matrix_reading import *
 from projection_processing import *
 from projection_bundle import *
 from clustering import *
 
-factors_path = r"E:\Git\Scenario-Software\SimpleTest_Factors.xlsx"
+
 matrix_path = r"E:\Git\Scenario-Software\consistency_matrix_test.xlsx"
-clusters_path = r"E:\Git\Scenario-Software\clusters.xlsx"
 keep_n_projections = 1000  # How many projections should be kept for clustering
 
 projections = read_projections_from_matrix(matrix_path)

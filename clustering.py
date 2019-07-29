@@ -4,6 +4,9 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 import scipy.cluster.hierarchy as sch
 import numpy as np
 
+# This determines the clustering method. Check https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html#scipy.cluster.hierarchy.linkage for details
+method = 'average'  # average, ward, ...
+
 
 class cluster():
     def __init__(self, cluster, projections):
@@ -45,7 +48,7 @@ def create_distance_matrix(bundles):
     # Hamming metric: 0 if same, 1 if different
     d = sch.distance.pdist(bundles, 'hamming')
     # generate the linkage matrix
-    Z = linkage(d, 'ward')
+    Z = linkage(d, method)
     return Z
 
 

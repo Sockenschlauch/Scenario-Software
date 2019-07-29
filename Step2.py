@@ -2,6 +2,7 @@ from consistency_matrix_reading import *
 from projection_processing import *
 from projection_bundle import *
 from clustering import *
+from cluster_writing import write_clusters
 
 
 matrix_path = r"E:\Git\Scenario-Software\consistency_matrix_test.xlsx"
@@ -40,8 +41,8 @@ print("\n-------- Starting Clustering ---------\n")
 
 Z = create_distance_matrix(bundles)
 
-show_dendrogram(Z)
-show_elbow(Z)
+# show_dendrogram(Z)
+# show_elbow(Z)
 
 n = int(input("How many clusters are there? "))
 
@@ -58,3 +59,5 @@ for i in range(len(cluster_array)):
 
 for i in range(n):
     print(cluster_list[i].get_mixture())
+
+write_clusters(factors, projections, cluster_list)

@@ -3,6 +3,7 @@ from projection_processing import *
 from projection_bundle import *
 from clustering import *
 from cluster_writing import write_clusters
+import numpy as np
 
 
 matrix_path = r"E:\Git\Scenario-Software\consistency_matrix_test.xlsx"
@@ -41,12 +42,18 @@ print("\n-------- Starting Clustering ---------\n")
 
 Z = create_distance_matrix(bundles)
 
-# show_dendrogram(Z)
-# show_elbow(Z)
+show_dendrogram(Z)
+show_elbow(Z)
 
 n = int(input("How many clusters are there? "))
 
 cluster_array = get_clusters(Z, n)
+print(cluster_array)
+
+# sometimes not n cluster get created. To cath this, the maximum number is checked
+if n > np.amax(cluster_array):
+    print("Less clusters were created than requested!")
+    n = np.amax(cluster_array)
 
 # creating a list of clusters
 cluster_list = []

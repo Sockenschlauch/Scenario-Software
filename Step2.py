@@ -1,8 +1,11 @@
+from matplotlib import pyplot as plt
+from sklearn import manifold
 from consistency_matrix_reading import *
 from projection_processing import *
 from projection_bundle import *
 from clustering import *
 from cluster_writing import write_clusters
+from MultidimensionalScaling import *
 import numpy as np
 
 
@@ -40,12 +43,15 @@ for object in bundles:
 
 print("\n-------- Starting Clustering ---------\n")
 
-Z = create_distance_matrix(bundles)
+D = create_distance_matrix(bundles)
+Z = create_linkage_matrix(D)
 
 show_dendrogram(Z)
 show_elbow(Z)
 
+
 n = int(input("How many clusters are there? "))
+n = 4
 
 cluster_array = get_clusters(Z, n)
 print(cluster_array)
@@ -68,3 +74,5 @@ for i in range(n):
     print(cluster_list[i].get_mixture())
 
 write_clusters(factors, projections, cluster_list)
+
+show_mds(D, cluster_array)

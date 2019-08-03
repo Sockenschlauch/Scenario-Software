@@ -17,7 +17,6 @@ def show_mds(Z, c):
     mds = manifold.MDS(n_components=2, metric=False, max_iter=30000, eps=1e-12,
                        dissimilarity="precomputed", n_init=10)
     pos = mds.fit(similarities).embedding_
-    print("MDS Stress: ", pos.Stress)
 
     fig, ax = plt.subplots()
 

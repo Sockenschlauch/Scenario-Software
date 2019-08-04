@@ -106,6 +106,7 @@ def show_elbow(Z):
     # if idx 0 is the max of this we want 2 clusters
     k = acceleration_rev.argmax() + 2
     print("Recommend clusters from elbow diagram:", k)
+    return k
 
 
 def get_clusters(Z, k):

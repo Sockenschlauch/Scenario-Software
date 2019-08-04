@@ -6,6 +6,7 @@ from projection_bundle import *
 from clustering import *
 from cluster_writing import write_clusters
 from MultidimensionalScaling import *
+from easygui import *
 import numpy as np
 
 
@@ -47,11 +48,12 @@ D = create_distance_matrix(bundles)
 Z = create_linkage_matrix(D)
 
 show_dendrogram(Z)
-show_elbow(Z)
+n = show_elbow(Z)
 
+# Asks the user how many clusters
+n = integerbox(msg='How many clusters shall be created?',
+               title='How many clusters', lowerbound=1, upperbound=30, default=n)
 
-n = int(input("How many clusters are there? "))
-n = 4
 
 cluster_array = get_clusters(Z, n)
 print(cluster_array)

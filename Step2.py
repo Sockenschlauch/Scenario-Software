@@ -8,9 +8,9 @@ from cluster_writing import write_clusters
 from MultidimensionalScaling import *
 from easygui import *
 import numpy as np
+import time
 
-
-matrix_path = r"E:\Git\Scenario-Software\consistency_matrix_test.xlsx"
+matrix_path = r"E:\Git\Scenario-Software\consistency_matrix rev 1.xlsx"
 keep_n_projections = 1000  # How many projections should be kept for clustering
 
 projections = read_projections_from_matrix(matrix_path)
@@ -72,9 +72,17 @@ for i in range(n):
 for i in range(len(cluster_array)):
     cluster_list[cluster_array[i]-1].add_bundle(bundles[i].bundle)
 
+# iterates through the clusters
 for i in range(n):
-    print(cluster_list[i].get_mixture())
+    cluster_list[i].get_mixture()
+    # print(cluster_list[i].get_mixture())
 
 write_clusters(factors, projections, cluster_list)
 
+#   time tracking while MDS:
+start_time = time.time()
+
 show_mds(D, cluster_array)
+
+elapsed_time = time.time() - start_time
+time.strftime(" MDS took %H:%M:%S", time.gmtime(elapsed_time))

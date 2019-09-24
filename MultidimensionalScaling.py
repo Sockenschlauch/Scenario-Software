@@ -7,8 +7,8 @@ import scipy.spatial.distance as ssd
 def show_mds(Z, c):
 
     similarities = ssd.squareform(Z)
-    print("\nÄhnlichkeitsmatrix:")
-    print(similarities)
+    print("\nÄhnlichkeitsmatrix:" + str(len(similarities)) +
+          "x" + str(len(similarities)))
 
     # metric multidimensional scaling
     mds = manifold.MDS(n_components=2, max_iter=3000, eps=1e-9,

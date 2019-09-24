@@ -10,7 +10,8 @@ from easygui import *
 import numpy as np
 import time
 
-matrix_path = r"E:\Git\Scenario-Software\consistency_matrix rev 1.xlsx"
+matrix_path = fileopenbox(msg='Choose the Consistency Matrix!',
+                          title='Open existing matrix', default="*\\consistency_matrix rev 1.xlsx", filetypes=["*.xlsx"])
 keep_n_projections = 1000  # How many projections should be kept for clustering
 
 projections = read_projections_from_matrix(matrix_path)
@@ -79,6 +80,8 @@ for i in range(n):
     cluster_list[i].get_mixture()
     # print(cluster_list[i].get_mixture())
 
+cluster_path = fileopenbox(msg='Pick a place to save the clusters!',
+                           title='Save clusters', default="*\\clusters.xlsx", filetypes=["*.xlsx"])
 write_clusters(factors, projections, cluster_list)
 
 #   time tracking while MDS:

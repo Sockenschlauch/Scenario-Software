@@ -2,8 +2,8 @@ import openpyxl
 from openpyxl import Workbook
 
 
-def write_clusters(factors, projections, cluster_list):
-    dst_filename = "clusters.xlsx"
+def write_clusters(path, factors, projections, cluster_list):
+    dst_filename = path
     wb = Workbook()
     sheet = wb.active
     sheet.title = "consistency matrix"

@@ -31,7 +31,9 @@ print("#Iterations: ", iter.get_n_permutations())
 bundles = []
 while iter.get_next():
     bundle = iter.get_counter()
-    bundles.append(projection_bundle(list(iter.get_counter()), matrix))
+    next_bundle = projection_bundle(list(iter.get_counter()), matrix)
+    if next_bundle.consistency != False:
+        bundles.append(next_bundle)
     bundles.sort(key=lambda x: x.consistency, reverse=True)
 
     if len(bundles) > keep_n_projections:

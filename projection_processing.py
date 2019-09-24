@@ -7,7 +7,12 @@ def calculate_consistency(matrix, bundle):
             else:
                 # Only for checking how value is calulated
                 # print("Colum: ", colum, "\tRow: ", row, "\tValue: ", matrix[colum][row][bundle[colum]-1][bundle[row]-1])
-                sum += matrix[colum][row][bundle[colum]-1][bundle[row]-1]
+                value = matrix[colum][row][bundle[colum]-1][bundle[row]-1]
+
+                # Here is decided, at which level of part-inconsistency a bundle is omited
+                if value == 0:
+                    return False
+                sum += value
 
     return sum
 

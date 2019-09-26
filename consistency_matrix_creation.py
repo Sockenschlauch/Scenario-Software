@@ -34,8 +34,6 @@ def print_projections(factor_list):
 
 
 def write_consistency_matrix(path, factor_list):
-    dst_filename = "consistency_matrix.xlsx"
-
     wb = Workbook()
     sheet = wb.active
     sheet.title = "consistency matrix"
@@ -76,7 +74,7 @@ def write_consistency_matrix(path, factor_list):
             else:
                 sheet.cell(i, colum-1).border = thin_border_right
 
-    wb.save(filename=dst_filename)
+    wb.save(filename=path)
 
 
 def get_projection_count(factor_list):  # returns the length of the factor list

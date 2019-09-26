@@ -3,7 +3,6 @@ from openpyxl import Workbook
 
 
 def write_clusters(path, factors, projections, cluster_list):
-    dst_filename = path
     wb = Workbook()
     sheet = wb.active
     sheet.title = "consistency matrix"
@@ -36,4 +35,4 @@ def write_clusters(path, factors, projections, cluster_list):
             sheet.cell(1, 2+j+max*i).value = "cluster " + str(cluster.cluster)
 
     # Writing to the file
-    wb.save(filename=dst_filename)
+    wb.save(filename=path)

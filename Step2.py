@@ -80,9 +80,9 @@ for i in range(n):
     cluster_list[i].get_mixture()
     # print(cluster_list[i].get_mixture())
 
-cluster_path = fileopenbox(msg='Pick a place to save the clusters!',
+cluster_path = filesavebox(msg='Pick a place to save the clusters!',
                            title='Save clusters', default="*\\clusters.xlsx", filetypes=["*.xlsx"])
-write_clusters(factors, projections, cluster_list)
+write_clusters(cluster_path, factors, projections, cluster_list)
 
 #   time tracking while MDS:
 start_time = time.time()

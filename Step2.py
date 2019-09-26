@@ -40,9 +40,10 @@ while iter.get_next():
     if len(bundles) > keep_n_projections:
         del bundles[keep_n_projections]
 
-for object in bundles:
-    print("Projection: ", object.bundle,
-          "\tConsistency: ", object.consistency)
+# Prints out the projections and their consistency. A LOT of text
+# for object in bundles:
+#     print("Projection: ", object.bundle,
+#           "\tConsistency: ", object.consistency)
 
 
 print("\n-------- Starting Clustering ---------\n")

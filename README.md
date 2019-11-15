@@ -11,6 +11,6 @@
  
  
  
- 
+ # ToDo
  There is much to do in the code, like adding comments, structuring, moving all adjunsting screws to a single file, working on a GUI, increasing performance, optimizing the multidimensional scaling, and so on...
  For this, please refer to Selbstreflektion.jpg

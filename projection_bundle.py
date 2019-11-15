@@ -12,6 +12,7 @@ class iterator():
         self._overflow = []
         self._counter = []
         self._n_permutations = self.calculate_permutations(projections)
+        self._current_iteration = 1
 
         # building counter & overflow
         for projection in projections:
@@ -29,6 +30,13 @@ class iterator():
             elif self._counter[i] > self._overflow[i]:
                 self._counter[i] = 1
                 self._counter[i+1] += 1
+
+        # Prints out the progress of the Iterator
+        self._current_iteration += 1
+        if self._current_iteration*10 % self._n_permutations == 0:
+            print("We are at ", self._n_permutations /
+                  self._current_iteration, " percent progress!")
+
         return self._counter
 
     # returns the current iteration

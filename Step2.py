@@ -12,7 +12,7 @@ import time
 
 matrix_path = fileopenbox(msg='Choose the Consistency Matrix!',
                           title='Open existing matrix', default="*\\consistency_matrix rev 1.xlsx", filetypes=["*.xlsx"])
-keep_n_projections = 1000  # How many projections should be kept for clustering
+keep_n_projections = 100000  # How many projections should be kept for clustering
 
 projections = read_projections_from_matrix(matrix_path)
 matrix = read_matrix(matrix_path, projections)
@@ -84,6 +84,8 @@ for i in range(n):
 cluster_path = filesavebox(msg='Pick a place to save the clusters!',
                            title='Save clusters', default="*\\clusters.xlsx", filetypes=["*.xlsx"])
 write_clusters(cluster_path, factors, projections, cluster_list)
+
+print("\n------------------ Clusters were saved! --------------------- \n")
 
 #   time tracking while MDS:
 start_time = time.time()

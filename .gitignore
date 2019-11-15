@@ -124,3 +124,7 @@ dmypy.json
 .vscode/settings.json
 ~$consistency_matrix.xlsx
 ~$consistency_matrix_test.xlsx
+
+# Ergebnisse und weitere Verzeichnissene
+Ergebnisse/
+Ergebnisse/Rev 2/consistency_matrix rev 2.xlsx
